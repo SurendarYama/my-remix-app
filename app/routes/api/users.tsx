@@ -1,13 +1,18 @@
 import type {ActionFunctionArgs} from "react-router";
-import type { Route } from "./+types/user";
 
-export async function loader({params}:Route.LoaderArgs){
-    return {
-        name: "Surendar Yama",
-        age:32,
-        isAuthenticated: true,
-        userId: params.userId
-    }
+export async function loader(){
+    return [
+        {
+            name: "Surendar Yama",
+            age:32,
+            isAuthenticated: true,
+        },
+        {
+            name: "Sudhakar Kalyanam",
+            age:30,
+            isAuthenticated: false,
+        }
+    ]
 }
 
 export async function action({request} :  ActionFunctionArgs ) {
