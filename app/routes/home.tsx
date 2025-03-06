@@ -10,7 +10,7 @@ export function meta({}: Route.MetaArgs) {
 
 export async function clientLoader (){
   try {
-    const data = await fetch("http://localhost:5174/user");
+    const data = await fetch("http://localhost:5173/user");
     return await data.json();
   }catch(error){
     return {error: "error thrown..."};
