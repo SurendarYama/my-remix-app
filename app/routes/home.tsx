@@ -1,6 +1,12 @@
 import type { Route } from "./+types/home";
 import {useLoaderData} from "react-router";
 
+type User = {
+  name:string,
+  age:number,
+  isAuthenticated: boolean,
+}
+
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "New React Router App" },
@@ -10,22 +16,25 @@ export function meta({}: Route.MetaArgs) {
 
 export async function clientLoader (){
   try {
-    const data = await fetch("http://localhost:5173/users");
+    const data = await fetch("/users");
     return await data.json();
-  }catch(error){
+  } catch(error) {
     return {error: "error thrown..."};
   }
 }
 
 export default function Home(){
-  const {name,age,isAuthenticated} = useLoaderData();
-
+  const data = useLoaderData();
   return (<>
-    <div className="flex flex-col bg-purple-200 text-black p-10 space-y-5">
-      <span>Name : {name}</span>
-      <span>Age: {age}</span>
-      <span>isAuthenticated: {isAuthenticated ? "Yes" : "No"}</span>
-    </div>
+    {data.map((user:User) => {
+      return (
+          <div className="p-10 flex flex-col bg-emerald-300 space-y-2" key={crypto.randomUUID()}>
+            <span>Name : {user.name}</span>
+            <span>Age: {user.age}</span>
+            <span>IsAuthenticated : {user.isAuthenticated ? "Yes" : "No"}</span>
+          </div>
+      )
+    })}
   </>)
 }
 
