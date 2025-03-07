@@ -11,6 +11,11 @@ export async function loader(){
             name: "Sudhakar Kalyanam",
             age:30,
             isAuthenticated: false,
+        },
+        {
+            name: "Kalpana Kalyanam",
+            age:50,
+            isAuthenticated: false,
         }
     ]
 }

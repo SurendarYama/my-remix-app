@@ -24,7 +24,7 @@ export async function clientLoader (){
 }
 
 export default function Home(){
-  const data = useLoaderData();
+  const data: User[] = useLoaderData();
   return (<>
     {data.map((user:User) => {
       return (
