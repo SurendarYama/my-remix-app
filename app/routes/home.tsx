@@ -1,5 +1,4 @@
 import type { Route } from "./+types/home";
-import {useLoaderData} from "react-router";
 
 type User = {
   name:string,
@@ -23,10 +22,10 @@ export async function clientLoader (){
   }
 }
 
-export default function Home(){
-  const data: User[] = useLoaderData();
+export default function Home({loaderData}: Route.ComponentProps){
+
   return (<>
-    {data.map((user:User) => {
+    {loaderData.map((user:User) => {
       return (
           <div className="p-10 flex flex-col bg-emerald-300 space-y-2" key={crypto.randomUUID()}>
             <span>Name : {user.name}</span>
