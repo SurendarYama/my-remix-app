@@ -1,4 +1,5 @@
 import type { Route } from "./+types/home";
+import {useOutletContext} from "react-router";
 
 type User = {
   name:string,
@@ -8,8 +9,8 @@ type User = {
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Yama Shop App | Home Page" },
+    { name: "description", content: "Welcome to Yama Shop App!" },
   ];
 }
 
@@ -23,8 +24,9 @@ export async function clientLoader (){
 }
 
 export default function Home({loaderData}: Route.ComponentProps){
-
+  const contextValue: number = useOutletContext()
   return (<>
+    <h1> { contextValue } </h1>
     {loaderData.map((user:User) => {
       return (
           <div className="p-10 flex flex-col bg-emerald-300 space-y-2" key={crypto.randomUUID()}>
