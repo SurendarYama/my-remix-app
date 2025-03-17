@@ -3,7 +3,7 @@ export function meta({params}: Route.MetaArgs){
     console.log(params);
     return [
         {title: `Post title for ${params.postId}`},
-        {description: `Post description for ${params.postId}`}
+        { name: "description", content: `Post description for ${params.postId}` },
     ]
 }
 export async function loader({params}:Route.LoaderArgs){
