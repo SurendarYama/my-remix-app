@@ -1,5 +1,5 @@
 import type { Route } from "./+types/home";
-import {useOutletContext} from "react-router";
+import { useOutletContext } from "react-router";
 
 type User = {
   name:string,
